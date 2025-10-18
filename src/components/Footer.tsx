@@ -3,7 +3,7 @@ import { Github, Linkedin, Instagram, Facebook, Twitch } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative isolate bg-gray-900 text-gray-300 py-16 pb-52 px-6 md:px-20 border-t border-gray-800 overflow-hidden">
+    <footer className="relative isolate text-gray-300 pt-16 px-6 md:px-20 border-t border-gray-800 overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -20,7 +20,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
         <div className="text-center md:text-left">
-          <h2 className="text-2xl font-bold text-white">Wasif Devs</h2>
+          <h2 className="text-2xl font-bold text-white">Next js</h2>
           <p className="text-gray-400 mt-2 max-w-sm">
             Creating clean, scalable, and visually striking web experiences. Code that speaks luxury and precision.
           </p>
