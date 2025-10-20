@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTransitionRouter } from 'next-view-transitions'
 import Link from 'next/link'
 import { pageAnimation } from './animations/PageTransition';
+import { motion, useScroll } from 'framer-motion';
 
 
 const route = [
@@ -17,6 +18,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const scrollYProgress = useScroll().scrollYProgress
 
   const router = useTransitionRouter();
 
@@ -26,7 +28,9 @@ export default function Navbar() {
     <>
       <Disclosure
         as="nav"
-        className="mx-auto mt-1 w-full bg-[#2d014b70] backdrop-blur-xs text-[#dddddd] font-bold  border-t border-b border-white/40 z-1500 fixed top-4 left-1/2 -translate-x-1/2" >
+        className="mx-auto mt-1 w-full bg-[#2d014b70] backdrop-blur-xs text-[#dddddd] font-bold  border-y border-white/40 z-1500 fixed top-4 left-1/2 -translate-x-1/2" >
+        <motion.div className='border-t w-full origin-left'  style={{scaleX:scrollYProgress}}/>
+
         <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -47,9 +51,9 @@ export default function Navbar() {
                       key={route.name}
                       href={route.url}
                       aria-current={route.current ? 'page' : undefined}
-                      onClick={(e) => {
+                      onClick={ async (e) => {
                       e.preventDefault();
-                      router.push(route.url, { onTransitionReady: pageAnimation });
+                      await router.push (route.url, { onTransitionReady: pageAnimation });
                     }}
                       className={classNames(
                         route.current ? ' text-[#9d00ff] ' : 'text-gray-300  hover:text-[#cf81ff] transition duration-200', ' px-3 py-2 text-sm font-medium',)}
@@ -86,6 +90,7 @@ export default function Navbar() {
             ))}
           </div>
         </DisclosurePanel>
+        <motion.div className='border-b w-full origin-left'  style={{scaleX:scrollYProgress}}/>
       </Disclosure>
     </>
   )

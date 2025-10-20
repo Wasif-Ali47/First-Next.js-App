@@ -50,7 +50,7 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { motion } from "framer-motion";
-import { child, container } from "../animations/FadeUp";
+import { child, childProjects, container,} from "../animations/FadeUp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,32 +156,32 @@ const AboutMe = () => {
     });
   }, []);
 
- const arches: ArchItem[] = [
-  {
-    id: "green-arch",
-    title: "Modern Web Design",
-    desc: "Pixel-perfect, responsive, and visually stunning web interfaces that blend creativity with usability — every layout crafted to make users stay.",
-    color: "#D5FF37"
-  },
-  {
-    id: "blue-arch",
-    title: "Interactive UI/UX",
-    desc: "Smooth, intuitive, and engaging user experiences powered by motion design, micro-interactions, and modern frameworks like React and Next.js.",
-    color: "#7DD6FF"
-  },
-  {
-    id: "pink-arch",
-    title: "Performance Optimization",
-    desc: "I make sites load faster than your patience — optimized assets, clean code, and SEO-friendly architecture for lightning-fast performance.",
-    color: "#FFA0B0"
-  },
-  {
-    id: "orange-arch",
-    title: "Maintenance & Scalability",
-    desc: "Clean, modular, and scalable codebases ready to grow with your business — from bug fixes to new features, I keep your site running smooth.",
-    color: "#FFA17B"
-  }
-];
+  const arches: ArchItem[] = [
+    {
+      id: "green-arch",
+      title: "Modern Web Design",
+      desc: "Pixel-perfect, responsive, and visually stunning web interfaces that blend creativity with usability — every layout crafted to make users stay.",
+      color: "#D5FF37"
+    },
+    {
+      id: "blue-arch",
+      title: "Interactive UI/UX",
+      desc: "Smooth, intuitive, and engaging user experiences powered by motion design, micro-interactions, and modern frameworks like React and Next.js.",
+      color: "#7DD6FF"
+    },
+    {
+      id: "pink-arch",
+      title: "Performance Optimization",
+      desc: "I make sites load faster than your patience — optimized assets, clean code, and SEO-friendly architecture for lightning-fast performance.",
+      color: "#FFA0B0"
+    },
+    {
+      id: "orange-arch",
+      title: "Maintenance & Scalability",
+      desc: "Clean, modular, and scalable codebases ready to grow with your business — from bug fixes to new features, I keep your site running smooth.",
+      color: "#FFA17B"
+    }
+  ];
 
 
   const images: ImgItem[] = [
@@ -209,19 +209,17 @@ const AboutMe = () => {
 
   return (
     <>
-      
-{/* headings */}
-          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false, amount: 0.2 }}  className="mx-auto max-w-2xl text-center pt-20">
-            <motion.h2 variants={child} className="text-4xl font-semibold tracking-tight text-balance  sm:text-5xl">What I Provide</motion.h2>
-            <motion.p  variants={child} className="mt-2 text-lg/8 text-gray-400">I build clean, fast, and interactive web experiences — from design to deployment.</motion.p>
-          </motion.div>
 
-      <div className="container max-w-[1440px] px-8 " >
+      {/* headings */}
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false, amount: 0.2 }} className="mx-auto max-w-2xl text-center pt-20">
+        <motion.h2 variants={child} className="text-4xl font-semibold tracking-tight text-balance  sm:text-5xl">What I Provide</motion.h2>
+        <motion.p variants={child} className="mt-2 text-lg/8 text-gray-400">I build clean, fast, and interactive web experiences — from design to deployment.</motion.p>
+      </motion.div>
 
-        <div className="spacer h-[30vh] w-full"></div>
+      <div className="container max-w-[1440px] md:px-8 " >
 
 
-        <div className="arch flex gap-14 justify-between max-w-[1100px] mx-auto">
+        <div className="arch hidden lg:flex gap-14 justify-between max-w-[1100px] mx-auto">
           <div className="arch__left flex flex-col min-w-[300px]">
             {arches.map((arch) => (
               <div key={arch.id} id={arch.id} className="arch__info grid place-items-center max-w-[356px] h-screen">
@@ -258,8 +256,23 @@ const AboutMe = () => {
             ))}
           </div>
         </div>
+        {/* Mobile */}
+        <div className="flex flex-col w-full justify-center items-center lg:hidden gap-20 mx-auto px-4 py-16">
+          {arches.map((arch, i) => (
+              <motion.div variants={childProjects} initial="hidden" whileInView="show" viewport={{ once: false, amount: 0.2 }}
+                key={arch.id} className="group bg-black relative h-[300px] sm:h-[400px] w-full max-w-full overflow-hidden">
+                <img src={images[i].src} alt={images[i].alt} className="absolute w-full h-full opacity-50 group-hover:opacity-80 object-cover object-center transition duration-300" />
+                <div className="flex flex-col justify-center items-center absolute w-full px-5 text-center  h-full">
+                  <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white pb-6 pointer-events-none">{arch.title}</h2>
+                  <p className="mt-2 text-base sm:text-lg text-gray-300 mb-6 pointer-events-none">{arch.desc}</p>
+                  <a href="#" className='lg:bg-[#42016d] bg-[#9a5fc23f] text-white hover:bg-transparent font-light border border-white/70 py-2 px-3 text-center transition duration-200'>
+                    <span>See Example</span>
+                  </a>
+                </div>
+              </motion.div>
+          ))}
+        </div>
 
-        <div className="spacer h-[30vh] w-full"></div>
       </div>
     </>
   );

@@ -38,10 +38,8 @@ export default function Projects() {
               return (
                 // project card
                 <motion.div variants={childProjects} key={index} className="relative group overflow-hidden px-6 py-25 border border-white/30 text-neutral-200 flex flex-col gap-3 justify-center items-center text-center lg:h-full md:w-full lg:hover:w-[300%]  transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)]" >
-                  <div className="absolute inset-0 opacity-30 hover:opacity-70 transition duration-500"
-                    style={{ backgroundImage: `url(${project.bg})`, backgroundSize: "cover", backgroundPosition: "center", }}>
-                  </div>
-                  <div className="relative z-10 flex flex-col gap-3 justify-center items-center text-center pointer-events-none">
+                  <img src={project.bg} alt={project.bg} className="absolute w-full h-full opacity-30 hover:opacity-70 transition duration-500 object-cover object-center" />
+                  <div className="relative z-[1] flex flex-col gap-3 justify-center items-center text-center pointer-events-none">
                     <Icon className="h-6 w-6 " />
                     <h2 className="text-2xl font-semibold">{project.title}</h2>
                     <p className="text-neutral-300 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">{project.description}</p>

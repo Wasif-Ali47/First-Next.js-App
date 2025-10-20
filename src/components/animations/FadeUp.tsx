@@ -44,7 +44,7 @@ export const childProjects: Variants = {
     opacity: 1,
     transformOrigin: "bottom",
     transition: {
-      duration: 0.2,
+      duration: 0.5,
       ease: [0.25, 1, 0.5, 1],
     },
   },
