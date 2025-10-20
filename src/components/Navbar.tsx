@@ -80,6 +80,10 @@ export default function Navbar() {
                 as="a"
                 href={route.url}
                 aria-current={route.current ? 'page' : undefined}
+                onClick={ async (e) => {
+                      e.preventDefault();
+                      await router.push (route.url, { onTransitionReady: pageAnimation });
+                    }}
                 className={classNames(
                   route.current ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium',
