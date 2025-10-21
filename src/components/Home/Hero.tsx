@@ -16,15 +16,15 @@ export default function Hero() {
           <motion.div variants={containerHero} initial="hidden" whileInView="show" viewport={{ once: false, amount: 0.3 }} className="text-center flex justify-center items-center flex-col">
             {/* main Headings */}
             <div className="text-start w-fit">
-            <motion.h3 variants={child} className='text-3xl font-semibold tracking-tight text-balance text-neutral-300 sm:text-4xl'>I'M</motion.h3>
-            <motion.h3 variants={child} className="text-6xl font-bold tracking-tight text-balance sm:text-7xl mb-2 text-[#9d00ff] border-b-2">WASIF ALI</motion.h3>
-            <motion.h3 variants={child} className='text-3xl font-semibold tracking-tight text-balance text-neutral-300 sm:text-4xl'>a web developer.</motion.h3>
+            <motion.h3 variants={child} className='text-3xl font-semibold tracking-tight text-balance text-neutral-300 sm:text-2xl'>I'M</motion.h3>
+            <motion.h3 variants={child} className="text-6xl tracking-tight text-balance sm:text-[10rem] text-gray-200 mb-2 font-semibold">WASIF ALI</motion.h3>
+            <motion.h3 variants={child} className='text-3xl font-semibold tracking-tight text-balance text-neutral-300 sm:text-2xl'>a web developer.</motion.h3>
             </div>
-            <motion.p  variants={child} className="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8"> I love turning ideas into clean, modern web experiences. Whether it’s coding sleek UIs, experimenting with design, Always improving, always curious — just tryna be better than yesterday.</motion.p>
+            <motion.p  variants={child} className="mt-8 text-[0.8rem] font-medium text-pretty text-gray-400 sm:text-[1rem]"> I love turning ideas into clean, modern web experiences. Whether it’s coding sleek UIs, experimenting with design, Always improving, always curious — just tryna be better than yesterday.</motion.p>
             {/* action buttons */}
             <motion.div  variants={child} className="mt-10 flex items-center justify-center gap-x-3">
-              <Link href="#Projects" className='bg-[#42016d] backdrop-blur-xs border-1 text-[#dddddd]  py-2 px-7 text-center'>My Creations <span aria-hidden="true">&rarr;</span></Link>
-              <Link href="#AboutMe"  className='bg-[#2d014b00] border-1 text-[#dddddd] py-2 px-8 '>What You Get<span aria-hidden="true">&rarr;</span></Link>
+              <Link href="#Projects" className='bg-[#42016d] backdrop-blur-xs border-1 text-[#dddddd]  py-2 px-7 text-center'>My Creations </Link>
+              <Link href="#AboutMe"  className='bg-[#2d014b00] border-1 text-[#dddddd] py-2 px-8 '>What You Get</Link>
             </motion.div>
           </motion.div>
         </div>

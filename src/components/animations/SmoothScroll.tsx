@@ -1,31 +1,27 @@
-"use client";
-import { useEffect } from "react";
+// app/layout.tsx or pages/_app.tsx if using pages dir
+'use client'
 
-export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+import { useEffect, useRef, ReactNode } from 'react';
+import Lenis from 'lenis';
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const rafRef = useRef<number | null>(null);
+
   useEffect(() => {
-    let current = window.scrollY;
+    const scroller = new Lenis();
+    lenisRef.current = scroller;
 
-    const onScroll = () => {
-      current = window.scrollY;
+    const raf = (time: number) => {
+      scroller.raf(time);
+      rafRef.current = requestAnimationFrame(raf);
     };
 
-    const smooth = () => {
-      const target = window.scrollY;
-      const delta = (target - current) * 0.1; // easing factor
-      if (Math.abs(delta) > 0.5) {
-        window.scrollTo(0, current + delta);
-        requestAnimationFrame(smooth);
-      } else {
-        current = target;
-        requestAnimationFrame(smooth);
-      }
-    };
-
-    requestAnimationFrame(smooth);
-    window.addEventListener("scroll", onScroll);
+    rafRef.current = requestAnimationFrame(raf);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lenisRef.current?.destroy();
     };
   }, []);
 

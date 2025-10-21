@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
 
 html,body{
     scroll-behavior: smooth;
@@ -32,3 +34,4 @@ html,body{
   z-index: 1;
   animation: none !important;
 }
+
